@@ -550,7 +550,7 @@ html.gl-on .glass.switcher::after{background:var(--capsule)}
   .fmeter{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between}
   .count{margin-left:0;width:100%}
   .ntiles{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .nitem[data-has="true"]{width:170px}
+  .nitem[data-has="true"]:not([data-open="true"]){width:170px}
   .brand span:last-child{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -628,6 +628,112 @@ html.gl-on .glass.switcher::after{background:var(--capsule)}
     box-shadow:1px -1px 2px hsl(0 0% 100% / .5) inset,0 -1px 2px hsl(0 0% 100% / .5) inset,-1px -1px 2px hsl(0 0% 100% / .5) inset,1px 1px 2px hsl(0 0% 30% / .5) inset,-8px 4px 10px -6px hsl(0 0% 30% / .25) inset,-1px 1px 6px hsl(0 0% 30% / .25) inset,-1px -1px 8px hsl(0 0% 60% / .15),1px 1px 2px hsl(0 0% 30% / .15),2px 2px 6px hsl(0 0% 30% / .15),-2px -1px 2px hsl(0 0% 100% / .25) inset,3px 6px 16px -6px hsl(0 0% 30% / .5)}
   .liquid-toggle .indicator__liquid .cover{content:'';position:absolute;inset:0;background:#fff;border-radius:100px}
 }
+
+/* ==========================================================================
+   Собствени рецепти
+   ========================================================================== */
+.ownlink{color:var(--accent-glass);font-weight:600;text-underline-offset:3px}
+.badge.mine{top:10px;bottom:auto}
+.own-acts{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin:4px 22px 14px;padding:12px 12px 12px 18px;border-radius:24px;background:var(--inset);box-shadow:inset 0 0 0 1px var(--line)}
+.own-acts p{margin:0;display:flex;align-items:center;gap:8px;color:var(--on-glass-muted);font-size:.92rem}
+.own-acts p svg{width:18px;height:18px;color:var(--accent-glass)}
+.own-acts>div{display:flex;flex-wrap:wrap;gap:8px}
+.btn.danger{color:#e5484d}
+.btn .bt svg{flex:none}
+.chip svg{width:18px;height:18px;margin-right:6px;vertical-align:-3px}
+
+.wzsheet{max-width:780px}
+.wzprog{--p:0;position:relative;padding:10px 22px 4px}
+.wzbar{position:absolute;top:27px;left:calc(22px + (100% - 44px) * .125);right:calc(22px + (100% - 44px) * .125);height:3px;border-radius:3px;background:var(--line)}
+.wzfill{position:absolute;inset:0 auto 0 0;width:calc(var(--p) * 100%);border-radius:inherit;background:var(--accent);transition:width .7s cubic-bezier(.3,1.25,.4,1)}
+.wzprog ol{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.wzprog button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--on-glass-muted);font:500 .82rem/1.2 var(--font-body);text-align:center;-webkit-tap-highlight-color:transparent}
+.wzdot{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--tint-sheet);box-shadow:inset 0 0 0 1.5px var(--line);font:600 .95rem/1 var(--font-body);color:var(--on-glass);
+  transition:background .4s,color .4s,box-shadow .4s,scale .5s cubic-bezier(.3,1.7,.5,1)}
+.wzdot svg{width:16px;height:16px}
+.wzprog li[data-ps="cur"] .wzdot{background:var(--accent);color:var(--on-accent);scale:1.14;box-shadow:0 8px 20px -8px var(--accent)}
+.wzprog li[data-ps="done"] .wzdot{background:var(--solid-bg);color:var(--solid-fg);box-shadow:none}
+.wzprog li[data-ps="cur"] button{color:var(--on-glass)}
+.wzprog button:focus-visible .wzdot{outline:2px solid var(--accent-glass);outline-offset:3px}
+
+.wzstage{position:relative;padding:18px 22px 0}
+.wzpanel{display:grid;gap:22px}
+.wzf{display:grid;gap:10px;min-width:0}
+.wzl{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font:600 .98rem/1.25 var(--font-body);color:var(--on-glass)}
+.wzl i{font-style:normal;font-weight:400;color:var(--on-glass-dim);font-size:.85rem}
+.wzl output{font-weight:600;color:var(--accent-glass);font-variant-numeric:tabular-nums;white-space:nowrap}
+.wzin{all:unset;box-sizing:border-box;display:block;width:100%;min-width:0;padding:14px 18px;border-radius:20px;background:var(--inset);box-shadow:inset 0 0 0 1px var(--line);color:var(--on-glass);font:400 1rem/1.4 var(--font-body);
+  transition:box-shadow .25s,background .25s}
+.wzin::placeholder{color:var(--on-glass-dim)}
+.wzin:focus{box-shadow:inset 0 0 0 2px var(--accent-glass),0 0 0 5px color-mix(in srgb,var(--accent) 16%,transparent)}
+.wzin.bad{box-shadow:inset 0 0 0 2px #e5484d}
+textarea.wzin{resize:vertical;min-height:88px;white-space:pre-wrap}
+.wzbig{font-size:1.15rem;font-weight:600}
+select.wzin{cursor:pointer;padding-right:30px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 17px) 52%,calc(100% - 12px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select.wzin option{color:#111;background:#fff}
+.wzrow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 12px 10px 18px;border-radius:24px;background:var(--inset);box-shadow:inset 0 0 0 1px var(--line)}
+.wzrow+.wzrow{margin-top:-2px}
+.wzrow>span{display:flex;align-items:center;gap:8px;min-width:0;font-weight:500}
+.wzrow>span:has(b){flex-direction:column;align-items:flex-start;gap:3px}
+.wzrow small{color:var(--on-glass-muted);font-size:.86rem;font-weight:400}
+.wzrow>span>svg{width:18px;height:18px;color:var(--accent-glass)}
+.srng{position:relative;height:42px;margin-inline:30px;touch-action:none;user-select:none;-webkit-user-select:none}
+.srng .rfill{left:-6px;width:calc(var(--hi) * 1% + 6px)}
+
+.wzsteps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.wzstep{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;gap:12px;align-items:start;padding:12px;border-radius:24px;background:var(--inset);box-shadow:inset 0 0 0 1px var(--line)}
+.wzn{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--tint-thin);box-shadow:inset 0 0 0 1.5px var(--line);font:600 .95rem/1 var(--font-body)}
+.wzs-b{display:grid;gap:6px;min-width:0}
+.wzs-b textarea.wzin,.wzs-b textarea{all:unset;box-sizing:border-box;width:100%;min-height:58px;padding:8px 10px;border-radius:14px;color:var(--on-glass);font:400 1rem/1.45 var(--font-body);resize:vertical;white-space:pre-wrap;transition:background .2s,box-shadow .2s}
+.wzs-b textarea::placeholder{color:var(--on-glass-dim)}
+.wzs-b textarea:focus{background:var(--tint-thin);box-shadow:inset 0 0 0 1.5px var(--accent-glass)}
+.wzs-b textarea.bad{box-shadow:inset 0 0 0 2px #e5484d}
+.wzs-tm{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-left:10px;color:var(--on-glass-muted);font-size:.9rem}
+.wzs-tm>span{display:flex;align-items:center;gap:6px}
+.wzs-tm>span svg{width:16px;height:16px}
+.wzs-tm .lt-wrap{width:77px;height:33px}
+.wzs-tm .liquid-toggle{scale:.55}
+.wzdel{width:36px;height:36px;border-radius:50%;border:0;padding:0;display:grid;place-items:center;background:none;color:var(--on-glass-dim);cursor:pointer;transition:background .2s,color .2s,scale .25s cubic-bezier(.3,1.6,.5,1)}
+.wzdel svg{width:16px;height:16px}
+@media (hover:hover){.wzdel:not(:disabled):hover{background:var(--tint-thin);color:#e5484d;scale:1.1}}
+.wzdel:disabled{opacity:.25;cursor:default}
+.wzcoll{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .5s cubic-bezier(.3,1.15,.4,1),opacity .3s}
+.wzcoll[data-open="true"]{grid-template-rows:1fr;opacity:1}
+.wzcoll>div{min-height:0;overflow:hidden}
+.wzf-in{padding:4px 2px 8px}
+.wzf-in .wzl span:empty{display:none}
+.wzf-in .wzl{justify-content:flex-end}
+.wznut{display:grid;gap:16px;padding:16px 4px 8px}
+.wzadd{justify-self:start}
+
+.wzings{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.wzing{display:grid;grid-template-columns:minmax(0,1fr) 88px 104px 36px;gap:8px;align-items:center}
+.wzing .wzin{padding:12px 14px;border-radius:16px}
+@media (max-width:560px){
+  .wzing{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 36px;padding:8px;border-radius:20px;background:var(--inset);box-shadow:inset 0 0 0 1px var(--line)}
+  .wzing .wzin[data-if="n"]{grid-column:1/-1}
+  .wzing .wzin{background:var(--tint-thin)}
+  .wzstep{grid-template-columns:30px minmax(0,1fr) 30px;gap:8px;padding:10px}
+  .wzn,.wzdel{width:30px;height:30px}
+  .wzprog .wzlbl{font-size:.74rem}
+  .wzstage{padding-inline:14px}
+  .wzprog{padding-inline:14px}
+  .wzfoot{padding-inline:14px}
+  .srng{margin-inline:28px}
+}
+
+.wzphoto{position:relative;aspect-ratio:16/10;width:100%;border-radius:26px;overflow:hidden;background:var(--inset);box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .25s,scale .3s cubic-bezier(.3,1.5,.5,1)}
+.wzphoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.wzphoto.over{box-shadow:inset 0 0 0 3px var(--accent);scale:1.015}
+.wzpbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.wzpbar small{color:var(--on-glass-muted);font-size:.88rem}
+.wzerr{margin:0;color:#e5484d;font-weight:500;font-size:.92rem;min-height:1.2em}
+.wzfoot{display:flex;align-items:center;gap:12px;padding:22px 22px 18px}
+.wzfoot .wzerr{flex:1;min-width:0;text-align:center}
+.wzback[disabled]{visibility:hidden}
+.wzphoto.media{margin:0}
+.wzfoot{justify-content:space-between}.wzfoot .wzerr:empty{visibility:hidden}.wzfoot .btn{white-space:nowrap}
+.wzf .chip{display:inline-flex;align-items:center;gap:6px}.wzf .chip svg{margin:0;display:block}
 
 </style>
 </head>
@@ -1283,6 +1389,21 @@ bg:{
   blurb_zakuska:'Сутрин, без бързане', blurb_obyad:'Сито и домашно', blurb_vecherya:'Топло и спокойно',
   banner_h:'Какво има в хладилника?', banner_p:'Отбележи продуктите, които имаш вкъщи, и виж коя рецепта можеш да сготвиш веднага.', banner_btn:'Отвори хладилника',
   lead_zakuska:'От попара за десет минути до баница за неделната трапеза.',
+  hard:'Трудно', vegan:'Веган', mine:'Моя', mine_chip:'Мои рецепти', edit:'Редактирай', del:'Изтрий', del_sure:'Сигурен ли си? Натисни пак',
+  own_note:'Твоя рецепта · пази се само в този браузър', own_count:n=>n===1?'Имаш 1 своя рецепта.':`Имаш ${n} свои рецепти.`,
+  nut_note_own:'Стойностите са въведени от теб.',
+  add_h:'Имаш своя рецепта?', add_p:'Добави я стъпка по стъпка: име, приготвяне, съставки и снимка.', add_btn:'Добави рецепта',
+  wz_h:'Нова рецепта', wz_edit_h:'Редактирай рецептата', wz_p:'Само името и поне една стъпка са задължителни. Всичко останало е по желание.',
+  wz_s0:'Основно', wz_s1:'Приготвяне', wz_s2:'Съставки', wz_s3:'Снимка', wz_of:(a,b)=>`Стъпка ${a} от ${b}`,
+  wz_name:'Име на ястието', wz_name_ph:'Например „Бабината мусака“', wz_desc:'Описание', wz_desc_ph:'Няколко думи за ястието', wz_opt:'по желание',
+  wz_lvl:'Трудност', wz_diet:'Хранене', wz_time:'Приблизително време', wz_unset:'Не е посочено', wz_serv:'Порции',
+  wz_meal:'Категория', wz_steps:'Стъпки', wz_step_ph:n=>`Опиши стъпка ${n}…`, wz_timer:'Таймер', wz_add_step:'Добави стъпка', wz_rm_step:n=>`Премахни стъпка ${n}`,
+  wz_ings:'Съставки', wz_ing_ph:'Съставка', wz_amt_ph:'Кол.', wz_add_ing:'Добави съставка', wz_rm_ing:'Премахни съставката', wz_unit:'Мярка', wz_unit_none:'на вкус',
+  wz_nut:'Хранителни стойности на порция', wz_nut_d:'Включи, ако ги знаеш.',
+  wz_pick:'Избери снимка', wz_change:'Смени снимката', wz_drop:'PNG, JPEG или WebP. Можеш и да я пуснеш върху полето.', wz_nophoto:'Без снимка', wz_nophoto_d:'Ще се покаже чинийка по подразбиране.',
+  wz_back:'Назад', wz_next:'Напред', wz_save:'Запази рецептата', wz_saved:'Запазено',
+  wz_err_name:'Напиши име на ястието.', wz_err_steps:'Напиши поне една стъпка.', wz_err_photo:'Тази снимка не може да се отвори. Опитай с PNG или JPEG.',
+  wz_err_space:'Няма място в браузъра. Опитай с по-малка снимка или без снимка.',
   lead_deserti:'Сладко, но леко: с мед вместо захар, пълнозърнесто брашно и малко мазнина.', blurb_deserti:'Сладко и леко',
   lead_napitki:'Айрян, шейк и домашна лимонада: освежаващо и бързо.', blurb_napitki:'Студено и освежаващо',
   fr_blender:'Имам блендер', fr_blender_d:'Някои напитки и рецепти се правят с блендер. Изключи, ако нямаш.', fr_appl:'Уреди', needs_blender:'Нужен блендер', fr_noblender:'Нужен блендер',
@@ -1330,6 +1451,21 @@ en:{
   blurb_zakuska:'Mornings, no rush', blurb_obyad:'Hearty and homemade', blurb_vecherya:'Warm and calm',
   banner_h:'What is in the fridge?', banner_p:'Tick the ingredients you have at home and see which recipe you can cook right away.', banner_btn:'Open the fridge',
   lead_zakuska:'From a ten-minute popara to a banitsa for the Sunday table.',
+  hard:'Hard', vegan:'Vegan', mine:'Mine', mine_chip:'My recipes', edit:'Edit', del:'Delete', del_sure:'Sure? Tap again',
+  own_note:'Your recipe · saved only in this browser', own_count:n=>n===1?'You have 1 recipe of your own.':`You have ${n} recipes of your own.`,
+  nut_note_own:'You entered these values.',
+  add_h:'Got a recipe of your own?', add_p:'Add it step by step: name, method, ingredients and a photo.', add_btn:'Add a recipe',
+  wz_h:'New recipe', wz_edit_h:'Edit recipe', wz_p:'Only the name and at least one step are required. Everything else is optional.',
+  wz_s0:'Basics', wz_s1:'Method', wz_s2:'Ingredients', wz_s3:'Photo', wz_of:(a,b)=>`Step ${a} of ${b}`,
+  wz_name:'Name of the dish', wz_name_ph:'For example “Grandma’s moussaka”', wz_desc:'Description', wz_desc_ph:'A few words about the dish', wz_opt:'optional',
+  wz_lvl:'Difficulty', wz_diet:'Diet', wz_time:'Approximate time', wz_unset:'Not set', wz_serv:'Servings',
+  wz_meal:'Category', wz_steps:'Steps', wz_step_ph:n=>`Describe step ${n}…`, wz_timer:'Timer', wz_add_step:'Add a step', wz_rm_step:n=>`Remove step ${n}`,
+  wz_ings:'Ingredients', wz_ing_ph:'Ingredient', wz_amt_ph:'Qty', wz_add_ing:'Add an ingredient', wz_rm_ing:'Remove ingredient', wz_unit:'Unit', wz_unit_none:'to taste',
+  wz_nut:'Nutrition per serving', wz_nut_d:'Switch on if you know them.',
+  wz_pick:'Choose a photo', wz_change:'Change photo', wz_drop:'PNG, JPEG or WebP. You can also drop it onto the box.', wz_nophoto:'No photo', wz_nophoto_d:'A default plate will be shown.',
+  wz_back:'Back', wz_next:'Next', wz_save:'Save recipe', wz_saved:'Saved',
+  wz_err_name:'Enter a name for the dish.', wz_err_steps:'Write at least one step.', wz_err_photo:'This photo can’t be opened. Try a PNG or JPEG.',
+  wz_err_space:'There’s no room left in the browser. Try a smaller photo or no photo.',
   lead_deserti:'Sweet but light: honey instead of sugar, wholemeal flour and little fat.', blurb_deserti:'Sweet and light',
   lead_napitki:'Ayran, a shake and homemade lemonade: refreshing and quick.', blurb_napitki:'Cold and refreshing',
   fr_blender:'I have a blender', fr_blender_d:'Some drinks need a blender. Switch it off if you do not have one.', fr_appl:'Equipment', needs_blender:'Needs a blender', fr_noblender:'Needs a blender',
@@ -1536,7 +1672,7 @@ void main(){
   }
   const rectBuf=new Float32Array(80*4),infoBuf=new Float32Array(80*4);
   function collect(){
-    const W=root.clientWidth,H=root.clientHeight,els=document.querySelectorAll('main .glass,.top .glass,.dock');
+    const W=cv.clientWidth||root.clientWidth,H=cv.clientHeight||root.clientHeight,els=document.querySelectorAll('main .glass,.top .glass,.dock');
     let n=0;
     for(let i=0;i<els.length&&n<MAXR;i++){
       const el=els[i],b=el.getBoundingClientRect();
@@ -1551,7 +1687,7 @@ void main(){
     return n;
   }
   function draw(){
-    const dpr=Math.min(window.devicePixelRatio||1,1.5),W=root.clientWidth,H=root.clientHeight;
+    const dpr=Math.min(window.devicePixelRatio||1,1.5),W=cv.clientWidth||root.clientWidth,H=cv.clientHeight||root.clientHeight;
     const pw=Math.round(W*dpr),ph=Math.round(H*dpr);
     if(cv.width!==pw||cv.height!==ph){cv.width=pw;cv.height=ph}
     if(!colors||frame%20===0)readColors();
@@ -1636,6 +1772,30 @@ const FRIDGE=FR_GROUPS.map(g=>({code:g.code,keys:g.keys.slice()}));
 FRIDGE_NEW.concat(FRIDGE_DRINKS,FRIDGE_DESSERTS).forEach(([k,bg,en,g])=>{FN[k]=[bg,en];(FRIDGE.find(x=>x.code===g)||FRIDGE[0]).keys.push(k)});
 const FKEYS=new Set(Object.keys(FN));
 
+/* ---------- Собствени рецепти: пазят се само в този браузър ---------- */
+/* Съставката се свързва с продукт от хладилника по името, за да работи търсенето по продукти */
+function matchKey(name){
+  const n=String(name||'').toLowerCase().trim();if(!n)return '';
+  for(const k of FKEYS){
+    const bg=FN[k][0].toLowerCase(),stem=bg.slice(0,Math.max(4,bg.length-2));
+    if(n===bg||n.includes(stem))return k;
+  }
+  return NAMEKEY[name]||'';
+}
+function addOwnToR(o,at){
+  const r=Object.assign({},o,{own:true,tags:'',en:null});
+  r.ing=(o.ing||[]).map(([n,a,u])=>[n,a==null||a===''?null:+a,u||'',matchKey(n)]);
+  r.steps=(o.steps||[]).map(([s,m])=>[s,m||0]);
+  r.nut=o.nut?{k:Math.round(o.nut.k),p:Math.round(o.nut.p),c:Math.round(o.nut.c),f:Math.round(o.nut.f),tot:{k:o.nut.k*o.serv,p:o.nut.p*o.serv,c:o.nut.c*o.serv,f:o.nut.f*o.serv}}:null;
+  PHOTOS[r.id]=o.photo||'';
+  if(at!=null&&at>=0)R.splice(at,1,r);else R.push(r);
+  byId[r.id]=r;
+  return r;
+}
+let OWN=[];
+try{OWN=JSON.parse(localStorage.getItem('trapeza-own')||'[]');if(!Array.isArray(OWN))OWN=[]}catch(e){OWN=[]}
+OWN.forEach(o=>{try{addOwnToR(o)}catch(e){}});
+
 /* ==========================================================================
    Помощни функции
    ========================================================================== */
@@ -1692,9 +1852,13 @@ const IC={
   heart:`<path d="M12 20.5s-7.5-4.6-9.2-9.4C1.7 7.8 3.6 4.5 7 4.5c2 0 3.7 1.1 5 3 1.3-1.9 3-3 5-3 3.4 0 5.3 3.3 4.2 6.6-1.7 4.8-9.2 9.4-9.2 9.4z" ${S} stroke-width="2"/>`,
   close:`<path d="M6 6l12 12M18 6 6 18" ${S} stroke-width="2.3"/>`,
   plus:`<path d="M12 5v14M5 12h14" ${S} stroke-width="2.4"/>`,
+  pen:`<path d="M4 20l1-4.6L15.6 4.8a2.1 2.1 0 0 1 3 0l.6.6a2.1 2.1 0 0 1 0 3L8.6 19 4 20z" ${S} stroke-width="2"/><path d="M13.6 6.8l3.6 3.6" ${S} stroke-width="2"/>`,
+  trash:`<path d="M4.5 6.5h15M9.5 6.5V4.8c0-.7.6-1.3 1.3-1.3h2.4c.7 0 1.3.6 1.3 1.3v1.7M6.5 6.5l.9 12.6c.1 1 .9 1.9 2 1.9h5.2c1.1 0 1.9-.9 2-1.9l.9-12.6" ${S} stroke-width="2"/>`,
+  image:`<rect x="3.5" y="4.5" width="17" height="15" rx="3" ${S} stroke-width="2"/><circle cx="9" cy="10" r="1.8"/><path d="M4 17.5l4.6-4.4 3.4 3 3.2-3.2 4.8 4.6" ${S} stroke-width="2"/>`,
   minus:`<path d="M5 12h14" ${S} stroke-width="2.4"/>`,
   refresh:`<path d="M20 11.2a8 8 0 1 0-2.1 5.9" ${S} stroke-width="2"/><path d="M20.4 4.6v6.2h-6.2" ${S} stroke-width="2"/>`,
   arrow:`<path d="M5 12h14M13 6l6 6-6 6" ${S} stroke-width="2.2"/>`,
+  arrowl:`<path d="M19 12H5M11 6l-6 6 6 6" ${S} stroke-width="2.2"/>`,
   check:`<path d="m5 12.5 4.5 4.5L19 7.5" ${S} stroke-width="2.6"/>`,
   gear:gearPath(),
   flame:'<path d="M12.4 2.4c.5 3.4-1.6 5-3.4 7.2-1.5 1.8-2.4 3.6-2.4 5.6a5.5 5.5 0 0 0 11 0c0-2.3-1-4-2.2-5.4-.2 1.5-.9 2.3-1.8 2.7.4-3.8-.2-7.4-1.2-10.1z"/>',
@@ -1756,13 +1920,17 @@ function hl(s,q){
   return s.split(re).map((p,i)=>i%2?`<mark>${esc(p)}</mark>`:esc(p)).join('');
 }
 
-const metaRow=r=>`<div class="meta"><span>${ic('users')}${r.serv}${nbsp}${r.serv===1?t('serv1'):t('serv2')}</span><span><span class="lvl" aria-hidden="true"><i class="on"></i><i class="${r.lvl>1?'on':''}"></i></span>${r.lvl>1?t('medium'):t('easy')}</span>${r.veg?`<span>${ic('leaf')}${t('veg')}</span>`:''}${needTag(r)}</div>`;
+const lvlSpan=r=>!r.lvl?'':`<span><span class="lvl" aria-hidden="true"><i class="on"></i><i class="${r.lvl>1?'on':''}"></i><i class="${r.lvl>2?'on':''}"></i></span>${r.lvl>2?t('hard'):r.lvl>1?t('medium'):t('easy')}</span>`;
+const vegTag=r=>r.vegan?`<span>${ic('leaf')}${t('vegan')}</span>`:r.veg?`<span>${ic('leaf')}${t('veg')}</span>`:'';
+const tmin=r=>r.time?`${r.time}${nbsp}${t('min')}`:'—';
+const mineTag=r=>r.own?`<span class="badge mine">${ic('pen')}${t('mine')}</span>`:'';
+const metaRow=r=>`<div class="meta"><span>${ic('users')}${r.serv}${nbsp}${r.serv===1?t('serv1'):t('serv2')}</span>${lvlSpan(r)}${vegTag(r)}${needTag(r)}</div>`;
 const btn=(inner,attrs='',cls='',tag='button')=>`<${tag} class="btn ${cls}" ${tag==='button'?'type="button"':''} ${attrs}><span class="bt">${inner}</span></${tag}>`;
-const nutLine=(r,cap)=>`<div class="nut"><span class="nk" title="${esc(t('n_kcal'))}">${ic('flame')}<b>${r.nut.k}</b>${nbsp}${t('kcal')}</span><span title="${esc(t('n_protein'))}"><i>${t('nb_p')}</i>${r.nut.p}${nbsp}${t('g')}</span><span title="${esc(t('n_carbs'))}"><i>${t('nb_c')}</i>${r.nut.c}${nbsp}${t('g')}</span><span title="${esc(t('n_fat'))}"><i>${t('nb_f')}</i>${r.nut.f}${nbsp}${t('g')}</span>${cap?`<small class="ncap" style="flex-basis:100%">${t('per_serving')}, ${t('n_approx')}</small>`:''}</div>`;
+const nutLine=(r,cap)=>!r.nut?'':`<div class="nut"><span class="nk" title="${esc(t('n_kcal'))}">${ic('flame')}<b>${r.nut.k}</b>${nbsp}${t('kcal')}</span><span title="${esc(t('n_protein'))}"><i>${t('nb_p')}</i>${r.nut.p}${nbsp}${t('g')}</span><span title="${esc(t('n_carbs'))}"><i>${t('nb_c')}</i>${r.nut.c}${nbsp}${t('g')}</span><span title="${esc(t('n_fat'))}"><i>${t('nb_f')}</i>${r.nut.f}${nbsp}${t('g')}</span>${cap?`<small class="ncap" style="flex-basis:100%">${t('per_serving')}, ${t('n_approx')}</small>`:''}</div>`;
 
 function card(r,q){
   return `<article class="card glass${blenderOff(r)?' off':''}" data-id="${r.id}">
-    <div class="media">${mediaInner(r)}<span class="badge">${ic('clock')}${r.time}${nbsp}${t('min')}</span></div>
+    <div class="media">${mediaInner(r)}<span class="badge">${ic('clock')}${tmin(r)}</span>${mineTag(r)}</div>
     ${favBtn(r.id)}
     <div class="card-body"><h3><a href="#r-${r.id}">${hl(rName(r),q)}</a></h3><p>${esc(rLead(r))}</p>${nutLine(r,true)}${metaRow(r)}</div>
   </article>`;
@@ -1784,7 +1952,7 @@ function pickFeature(meal,avoid){
   return pool[Math.floor(Math.random()*pool.length)];
 }
 function featureHTML(r,meal){
-  return `<div class="media">${mediaInner(r)}<span class="badge">${ic('clock')}${r.time}${nbsp}${t('min')}</span></div>
+  return `<div class="media">${mediaInner(r)}<span class="badge">${ic('clock')}${tmin(r)}</span>${mineTag(r)}</div>
   <div class="feature-body" id="featBody">
     <span class="pill"><i class="dot"></i>${t('feat_'+meal)}</span>
     <h2>${esc(rName(r))}</h2><p>${esc(rLead(r))}</p>${nutLine(r,true)}${metaRow(r)}
@@ -1796,7 +1964,7 @@ function buildHome(){
   const m=nowMeal();
   const f=(featId&&byId[featId]&&byId[featId].meal===m)?byId[featId]:pickFeature(m);featId=f.id;
   const tiles=MKEYS.map(k=>{
-    const Ls=R.filter(r=>r.meal===k),tm=Ls.map(r=>r.time);
+    const Ls=R.filter(r=>r.meal===k),tm=Ls.map(r=>r.time).filter(Boolean);
     return `<a class="tile glass rf" href="#${k}"><div class="tile-top"><span class="tile-ic">${ic(MICON[k])}</span>${k===m?`<span class="pill"><i class="dot"></i>${t('now')}</span>`:''}</div>
       <div><h3>${mealName(k)}</h3><p class="tl">${t('lead_'+k)}</p></div>
       <div class="meta"><span>${Ls.length}${nbsp}${rec(Ls.length)}</span><span>${ic('clock')}${Math.min(...tm)}–${Math.max(...tm)}${nbsp}${t('min')}</span></div></a>`}).join('');
@@ -1809,6 +1977,7 @@ function buildHome(){
     <article class="feature glass rf" id="feature">${featureHTML(f,m)}</article>
     <div class="tiles">${tiles}</div>
     <div class="banner glass rf"><div><h2>${t('banner_h')}</h2><p>${t('banner_p')}</p></div>${btn(`${t('banner_btn')} ${ic('arrow')}`,'href="#hladilnik"','primary','a')}</div>
+    <div class="banner glass rf addbanner"><div><h2>${t('add_h')}</h2><p>${t('add_p')}${OWN.length?` <a class="ownlink" href="#tarsene" data-ownsearch>${t('own_count',OWN.length)}</a>`:''}</p></div>${btn(`${ic('plus')} ${t('add_btn')}`,'href="#dobavi" id="addBtn"','primary','a')}</div>
   </div>`;
 }
 /* Часовникът показва само часове и минути и се обновява всяка минута */
@@ -1823,7 +1992,7 @@ function buildMeal(m){
 }
 function renderMeal(m){
   const F=mf[m];
-  const Ls=R.filter(r=>r.meal===m&&(!F.fast||r.time<=30)&&(!F.veg||r.veg));
+  const Ls=R.filter(r=>r.meal===m&&(!F.fast||(r.time&&r.time<=30))&&(!F.veg||r.veg));
   const pg=$('#page-'+m);
   $('[data-grid]',pg).innerHTML=Ls.length?Ls.map(r=>card(r)).join(''):emptyBox(t('empty_filters_h'),t('empty_filters_p'));
   $('[data-count]',pg).textContent=`${Ls.length} ${rec(Ls.length)}`;
@@ -1831,10 +2000,10 @@ function renderMeal(m){
 }
 
 /* ---------- Търсене ---------- */
-const sst={q:'',meals:new Set(),fast:false,veg:false,fav:false};
+const sst={q:'',meals:new Set(),fast:false,veg:false,fav:false,own:false};
 const NM=[['k','flame','n_kcal','kcal',10],['p','drumstick','n_protein','g',1],['c','wheat','n_carbs','g',1],['f','drop','n_fat','g',1]];
 const NR={};   /* границите от реалните рецепти */
-NM.forEach(([k,,,,st])=>{const v=R.map(r=>r.nut[k]);NR[k]=[Math.floor(Math.min(...v)/st)*st,Math.ceil(Math.max(...v)/st)*st]});
+NM.forEach(([k,,,,st])=>{const v=R.filter(r=>r.nut).map(r=>r.nut[k]);NR[k]=[Math.floor(Math.min(...v)/st)*st,Math.ceil(Math.max(...v)/st)*st]});
 const nv={},nraw={};NM.forEach(([k])=>{nv[k]=NR[k].slice();nraw[k]=NR[k].slice()});   /* текущи стойности на плъзгачите */
 const nActive=k=>nv[k][0]>NR[k][0]||nv[k][1]<NR[k][1];
 let nopen=null;
@@ -1892,7 +2061,7 @@ function buildSearch(){
     <form class="searchbar" id="sForm" role="search" style="margin-top:26px"><div class="sfield glass thin rf">${ic('search')}<input id="q" type="search" placeholder="${esc(t('search_ph'))}" aria-label="${esc(t('search_aria'))}" autocomplete="off" value="${esc(q0)}"></div></form>
     <div class="bar" role="group" aria-label="${esc(t('filters'))}">
       ${chip('m','all',t('all'),true)}${MKEYS.map(k=>chip('m',k,mealName(k))).join('')}<span class="sep" aria-hidden="true"></span>
-      ${chip('s','fast',t('fast'))}${chip('s','veg',t('veg'))}${chip('s','fav',t('fav'))}
+      ${chip('s','fast',t('fast'))}${chip('s','veg',t('veg'))}${chip('s','fav',t('fav'))}${OWN.length?chip('s','own',t('mine_chip')):''}
     </div>
     <p class="nlabel" id="nlabel">${t('nf_group')}</p>
     <div class="nrow" role="group" aria-labelledby="nlabel">${NM.map(nutItemHTML).join('')}</div>
@@ -1910,11 +2079,11 @@ function renderSearch(){
     const en=r.en||{name:'',lead:'',tags:'',ing:[]};
     return (r.name+' '+r.lead+' '+r.tags+' '+en.name+' '+en.lead+' '+(en.tags||'')+' '+MKEYS.map(k=>r.meal===k?T.bg['nav_'+k]+' '+T.en['nav_'+k]:'').join('')+' '+(r.veg?'вегетарианско vegetarian':'')+' '+r.ing.map(i=>i[0]).join(' ')+' '+en.ing.join(' ')).toLowerCase();
   };
-  const okN=r=>NM.every(([k])=>!nActive(k)||(r.nut[k]>=nv[k][0]&&r.nut[k]<=nv[k][1]));
-  let Ls=R.filter(r=>(!sst.meals.size||sst.meals.has(r.meal))&&(!sst.fast||r.time<=30)&&(!sst.veg||r.veg)&&(!sst.fav||isFav(r.id))&&okN(r)&&toks.every(x=>hay(r).includes(x)));
+  const okN=r=>NM.every(([k])=>!nActive(k)||(r.nut&&r.nut[k]>=nv[k][0]&&r.nut[k]<=nv[k][1]));
+  let Ls=R.filter(r=>(!sst.meals.size||sst.meals.has(r.meal))&&(!sst.fast||(r.time&&r.time<=30))&&(!sst.veg||r.veg)&&(!sst.fav||isFav(r.id))&&(!sst.own||r.own)&&okN(r)&&toks.every(x=>hay(r).includes(x)));
   const score=r=>toks.some(x=>(r.name+' '+(r.en?r.en.name:'')).toLowerCase().includes(x))?0:1;
   Ls.sort((a,b)=>score(a)-score(b)||a.time-b.time);
-  const key=Ls.map(r=>r.id).join()+'|'+q+'|'+L+'|'+hasBlender+'|'+[...favs].join()+'|'+(sst.fav?1:0);
+  const key=Ls.map(r=>r.id).join()+'|'+q+'|'+L+'|'+hasBlender+'|'+[...favs].join()+'|'+(sst.fav?1:0)+(sst.own?1:0);
   let html;
   if(key===sst._key){/* същият списък: не пресъздаваме картите (спестява снимките) */}
   else if(Ls.length)html=Ls.map(r=>card(r,q)).join('');
@@ -1973,10 +2142,11 @@ function sheetHTML(r,serv){
     <div class="sheet-actions"><div>${favBtn(r.id)}<button class="xbtn" type="button" id="xclose" aria-label="${esc(t('close'))}">${ic('close')}</button></div></div>
     <div class="s-media">${mediaInner(r)}</div>
     <div class="s-head"><h2>${esc(rName(r))}</h2><p>${esc(rLead(r))}</p>
-      <div class="meta"><span>${ic('clock')}${r.time}${nbsp}${t('min')}</span><span><span class="lvl" aria-hidden="true"><i class="on"></i><i class="${r.lvl>1?'on':''}"></i></span>${r.lvl>1?t('medium'):t('easy')}</span>${r.veg?`<span>${ic('leaf')}${t('veg')}</span>`:''}${needTag(r)}</div></div>
-    <section class="nblock" aria-labelledby="nh"><h3 id="nh">${t('nutrition_h')} <span style="font-weight:400;color:var(--on-glass-dim);font-size:.85rem">· ${t('per_serving')}, ${t('n_approx')}</span></h3>
+      <div class="meta"><span>${ic('clock')}${tmin(r)}</span>${lvlSpan(r)}${vegTag(r)}${needTag(r)}</div></div>
+    ${r.own?`<div class="own-acts"><p>${ic('users')}${t('own_note')}</p><div>${btn(`${ic('pen')}${t('edit')}`,`data-wedit="${r.id}"`)}${btn(`${ic('trash')}<span>${t('del')}</span>`,`data-wrm="${r.id}"`,'danger')}</div></div>`:''}
+    ${r.nut?`<section class="nblock" aria-labelledby="nh"><h3 id="nh">${t('nutrition_h')} <span style="font-weight:400;color:var(--on-glass-dim);font-size:.85rem">· ${t('per_serving')}, ${t('n_approx')}</span></h3>
       <div class="ntiles">${nTile('flame',r.nut.k,t('kcal'),t('n_kcal'))}${nTile('drumstick',r.nut.p,t('g'),t('n_protein'))}${nTile('wheat',r.nut.c,t('g'),t('n_carbs'))}${nTile('drop',r.nut.f,t('g'),t('n_fat'))}</div>
-      <p class="ntot" id="ntot">${totalLine(r,serv)}</p><p class="nnote">${t('nut_note')}</p></section>
+      <p class="ntot" id="ntot">${totalLine(r,serv)}</p><p class="nnote">${r.own?t('nut_note_own'):t('nut_note')}</p></section>`:''}
     <div class="s-cols">
       <section aria-labelledby="ih"><h3 id="ih">${t('ingredients')}</h3>
         <div class="ings"><div class="serv"><span>${t('servings')}</span><div class="stepper"><button type="button" data-st="-1" aria-label="${esc(t('fewer'))}">${ic('minus')}</button><output id="sv" aria-live="polite">${serv}</output><button type="button" data-st="1" aria-label="${esc(t('more'))}">${ic('plus')}</button></div></div>
@@ -2129,6 +2299,10 @@ function route(){
     if(curPage===null)showPage(r.meal);   /* пряка връзка: страницата отдолу е на същото хранене */
     openSheet(r);return;
   }
+  if(h==='dobavi'||(h.startsWith('redakt-')&&byId[h.slice(7)]&&byId[h.slice(7)].own)){
+    if(curPage===null)showPage('home');
+    openWizard(h==='dobavi'?null:h.slice(7));return;
+  }
   if(h==='nastroyki'){
     if(curPage===null)showPage('home');
     openSettings();return;
@@ -2272,7 +2446,7 @@ document.addEventListener('pointerdown',ltOn);
 document.addEventListener('pointerup',ltOff);document.addEventListener('pointercancel',ltOff);
 document.addEventListener('keydown',e=>{
   const th=e.target.closest&&e.target.closest('.rthumb');
-  if(!th)return;
+  if(!th||!th.closest('.rng'))return;
   if(th.closest('[data-hrng]')){
     const d=e.shiftKey?10:1;let v=null;
     if(e.key==='ArrowLeft'||e.key==='ArrowDown')v=hue-d;
@@ -2304,7 +2478,7 @@ document.addEventListener('click',e=>{
   if(tg===ov){requestClose();return}
   if((el=tg.closest('[data-st]'))){
     const r=byId[ov.dataset.id];let s=Math.min(12,Math.max(1,(+ov.dataset.serv)+(+el.dataset.st)));
-    ov.dataset.serv=s;$('#sv').textContent=s;$('#il').innerHTML=ingList(r,s);$('#ntot').innerHTML=totalLine(r,s);return}
+    ov.dataset.serv=s;$('#sv').textContent=s;$('#il').innerHTML=ingList(r,s);if($('#ntot'))$('#ntot').innerHTML=totalLine(r,s);return}
   if((el=tg.closest('.chk'))){const li=el.closest('li');const d=li.classList.toggle('done');el.setAttribute('aria-pressed',d);return}
   if((el=tg.closest('.tm'))){runTimer(el);return}
   if((el=tg.closest('.sw'))){setHue(+el.dataset.h,true);return}
@@ -2341,7 +2515,7 @@ document.addEventListener('keydown',e=>{
   if(!sheetOpen)return;
   if(e.key==='Escape'){requestClose();return}
   if(e.key==='Tab'){
-    const f=$$('button,a[href],input',ov).filter(x=>!x.disabled&&x.offsetParent!==null);if(!f.length)return;
+    const f=$$('button,a[href],input:not([type=file]),textarea,select',ov).filter(x=>!x.disabled&&x.offsetParent!==null);if(!f.length)return;
     const first=f[0],last=f[f.length-1];
     if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
     else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
@@ -2358,6 +2532,350 @@ document.addEventListener('pointermove',e=>{
 window.addEventListener('hashchange',route);
 window.addEventListener('resize',()=>{placeThumb(false);edges()});
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{placeThumb(false);edges()});
+
+
+/* ==========================================================================
+   ДОБАВИ СВОЯ РЕЦЕПТА: 4 стъпки (основно, приготвяне, съставки, снимка)
+   Рецептите се пазят в localStorage на този браузър (снимките се смаляват).
+   ========================================================================== */
+const UNITS=['г','мл','бр.','с.л.','ч.л.',''];
+const WZN=4;
+/* плъзгачи: [мин, макс, стъпка] */
+const SR={time:[0,240,5],serv:[1,12,1],'nut.k':[0,1500,10],'nut.p':[0,150,1],'nut.c':[0,200,1],'nut.f':[0,150,1],stm:[1,120,1]};
+let W=null,wzEdit=null,wzBusy=false;
+
+function newDraft(){
+  return {step:0,name:'',lead:'',lvl:0,veg:false,vegan:false,time:0,serv:4,meal:nowMeal(),
+    steps:Array.from({length:5},()=>({t:'',min:10,on:false})),
+    ing:Array.from({length:3},()=>({n:'',a:'',u:'г'})),
+    nutOn:false,nut:{k:300,p:15,c:30,f:10},photo:null,noPhoto:false};
+}
+function draftFrom(r){
+  const o=OWN.find(x=>x.id===r.id)||{};
+  return {step:0,name:r.name,lead:r.lead||'',lvl:r.lvl||0,veg:!!r.veg,vegan:!!r.vegan,time:r.time||0,serv:r.serv||4,meal:r.meal,
+    steps:r.steps.length?r.steps.map(([s,m])=>({t:s,min:m||10,on:!!m})):[{t:'',min:10,on:false}],
+    ing:r.ing.length?r.ing.map(([n,a,u])=>({n,a:a==null?'':String(a),u:u||''})):[{n:'',a:'',u:'г'}],
+    nutOn:!!o.nut,nut:o.nut?Object.assign({},o.nut):{k:300,p:15,c:30,f:10},photo:o.photo||null,noPhoto:!o.photo};
+}
+
+/* ---------- малки компоненти ---------- */
+const LT_IN='<div class="knockout"><div class="indicator indicator--masked"><div class="mask"></div></div></div><div class="indicator__liquid"><div class="shadow"></div><div class="wrapper"><div class="liquids"><div class="liquid__shadow"></div><div class="liquid__track"></div></div></div><div class="cover"></div></div>';
+const ltog=(attrs,on,label)=>`<div class="lt-wrap" data-mapped="false" data-bounce="true"><button class="liquid-toggle" type="button" ${attrs} aria-pressed="${!!on}" aria-label="${esc(label)}" style="--complete:${on?100:0}">${LT_IN}</button></div>`;
+function setLt(b,on){b.setAttribute('aria-pressed',!!on);b.style.setProperty('--complete',on?100:0)}
+
+function getV(k){
+  if(k.startsWith('nut.'))return W.nut[k.slice(4)];
+  if(k.startsWith('stm.'))return W.steps[+k.slice(4)].min;
+  return W[k];
+}
+function setV(k,v){
+  if(k.startsWith('nut.'))W.nut[k.slice(4)]=v;
+  else if(k.startsWith('stm.'))W.steps[+k.slice(4)].min=v;
+  else W[k]=v;
+}
+const cfgOf=k=>SR[k.startsWith('stm.')?'stm':k];
+function fmtV(k,v){
+  if(k==='time')return v?`${v}${nbsp}${t('min')}`:t('wz_unset');
+  if(k==='serv')return `${v}${nbsp}${v===1?t('serv1'):t('serv2')}`;
+  if(k==='nut.k')return `${v}${nbsp}${t('kcal')}`;
+  if(k.startsWith('nut.'))return `${v}${nbsp}${t('g')}`;
+  return `${v}${nbsp}${t('min')}`;
+}
+function srng(k,label){
+  const [mn,mx]=cfgOf(k),v=getV(k),p=(v-mn)/(mx-mn)*100;
+  return `<div class="srng" data-sk="${k}" style="--lo:0;--hi:${p}"><span class="rtrack"></span><span class="rfill"></span>
+    <button class="rthumb" type="button" role="slider" aria-label="${esc(label)}" aria-valuemin="${mn}" aria-valuemax="${mx}" aria-valuenow="${v}" aria-valuetext="${esc(fmtV(k,v))}" style="--v:${p}"></button></div>`;
+}
+const sfield=(k,label,opt)=>`<div class="wzf"><div class="wzl"><span>${label}${opt?` <i>${t('wz_opt')}</i>`:''}</span><output data-so="${k}">${fmtV(k,getV(k))}</output></div>${srng(k,label)}</div>`;
+function paintS(el,raw){
+  const k=el.dataset.sk,[mn,mx,st]=cfgOf(k);
+  raw=Math.max(mn,Math.min(mx,raw));
+  const v=Math.round(raw/st)*st,p=(raw-mn)/(mx-mn)*100;
+  setV(k,v);
+  el.style.setProperty('--hi',p);
+  const th=$('.rthumb',el);th.style.setProperty('--v',p);
+  th.setAttribute('aria-valuenow',v);th.setAttribute('aria-valuetext',fmtV(k,v));
+  const o=$(`[data-so="${k}"]`,ov);if(o)o.textContent=fmtV(k,v);
+}
+
+/* ---------- панели ---------- */
+const label=(txt,opt,forId)=>`<label class="wzl"${forId?` for="${forId}"`:''}><span>${txt}${opt?` <i>${t('wz_opt')}</i>`:''}</span></label>`;
+function stepItem(s,i,n){
+  return `<li class="wzstep" data-i="${i}">
+    <span class="wzn" aria-hidden="true">${i+1}</span>
+    <div class="wzs-b">
+      <textarea data-sf="${i}" rows="2" placeholder="${esc(t('wz_step_ph',i+1))}" aria-label="${esc(t('wz_step_ph',i+1))}">${esc(s.t)}</textarea>
+      <div class="wzs-tm"><span>${ic('clock')}${t('wz_timer')}</span>${ltog(`data-wst="${i}"`,s.on,t('wz_timer')+' '+(i+1))}</div>
+      <div class="wzcoll" data-open="${s.on}"><div><div class="wzf wzf-in"><div class="wzl"><span></span><output data-so="stm.${i}">${fmtV('stm.'+i,s.min)}</output></div>${srng('stm.'+i,t('wz_timer')+' '+(i+1))}</div></div></div>
+    </div>
+    <button class="wzdel" type="button" data-wdel="${i}" aria-label="${esc(t('wz_rm_step',i+1))}" ${n<2?'disabled':''}>${ic('close')}</button>
+  </li>`;
+}
+function ingItem(g,i,n){
+  return `<li class="wzing" data-i="${i}">
+    <input class="wzin" data-if="n" data-ii="${i}" type="text" maxlength="60" placeholder="${esc(t('wz_ing_ph'))}" aria-label="${esc(t('wz_ing_ph')+' '+(i+1))}" value="${esc(g.n)}">
+    <input class="wzin wzamt" data-if="a" data-ii="${i}" type="number" inputmode="decimal" min="0" step="any" placeholder="${esc(t('wz_amt_ph'))}" aria-label="${esc(t('wz_amt_ph'))}" value="${esc(g.a)}">
+    <select class="wzin wzunit" data-if="u" data-ii="${i}" aria-label="${esc(t('wz_unit'))}">${UNITS.map(u=>`<option value="${u}"${u===g.u?' selected':''}>${u||t('wz_unit_none')}</option>`).join('')}</select>
+    <button class="wzdel" type="button" data-widel="${i}" aria-label="${esc(t('wz_rm_ing'))}" ${n<2?'disabled':''}>${ic('close')}</button>
+  </li>`;
+}
+function photoInner(){
+  if(W.photo&&!W.noPhoto)return `<img src="${W.photo}" alt="">`;
+  return mediaInner({id:'__none',name:W.name||'',meal:W.meal});
+}
+function panelHTML(n){
+  if(n===0)return `
+    <div class="wzf">${label(t('wz_name'),false,'wzName')}<input class="wzin wzbig" id="wzName" data-wf="name" type="text" maxlength="80" placeholder="${esc(t('wz_name_ph'))}" value="${esc(W.name)}" required></div>
+    <div class="wzf">${label(t('wz_desc'),true,'wzDesc')}<textarea class="wzin" id="wzDesc" data-wf="lead" rows="3" maxlength="300" placeholder="${esc(t('wz_desc_ph'))}">${esc(W.lead)}</textarea></div>
+    <div class="wzf">${label(t('wz_lvl'),true)}<div class="opts" role="group" aria-label="${esc(t('wz_lvl'))}">${chip('wlvl','1',t('easy'),W.lvl===1)}${chip('wlvl','2',t('medium'),W.lvl===2)}${chip('wlvl','3',t('hard'),W.lvl===3)}</div></div>
+    <div class="wzf">${label(t('wz_diet'),true)}<div class="wzrow"><span>${ic('leaf')}${t('veg')}</span>${ltog('data-wt="veg"',W.veg,t('veg'))}</div><div class="wzrow"><span>${ic('leaf')}${t('vegan')}</span>${ltog('data-wt="vegan"',W.vegan,t('vegan'))}</div></div>
+    ${sfield('time',t('wz_time'),true)}
+    ${sfield('serv',t('wz_serv'),false)}`;
+  if(n===1)return `
+    <div class="wzf">${label(t('wz_meal'))}<div class="opts" role="group" aria-label="${esc(t('wz_meal'))}">${MKEYS.map(k=>chip('wmeal',k,`${ic(MICON[k])}${mealName(k)}`,W.meal===k)).join('')}</div></div>
+    <div class="wzf">${label(t('wz_steps'))}<ol class="wzsteps" id="wzsteps">${W.steps.map((s,i)=>stepItem(s,i,W.steps.length)).join('')}</ol>
+      ${btn(`${ic('plus')}${t('wz_add_step')}`,'data-wadd','wzadd')}</div>`;
+  if(n===2)return `
+    <div class="wzf">${label(t('wz_ings'),true)}<ul class="wzings" id="wzings">${W.ing.map((g,i)=>ingItem(g,i,W.ing.length)).join('')}</ul>
+      ${btn(`${ic('plus')}${t('wz_add_ing')}`,'data-waddi','wzadd')}</div>
+    <div class="wzf"><div class="wzrow"><span><b>${t('wz_nut')}</b><small>${t('wz_nut_d')}</small></span>${ltog('data-wt="nutOn"',W.nutOn,t('wz_nut'))}</div>
+      <div class="wzcoll" data-open="${W.nutOn}" id="wznut"><div><div class="wznut">
+        ${sfield('nut.k',t('n_kcal'))}${sfield('nut.p',t('n_protein'))}${sfield('nut.c',t('n_carbs'))}${sfield('nut.f',t('n_fat'))}
+      </div></div></div></div>`;
+  return `
+    <div class="wzf"><div class="wzphoto media" id="wzphoto" data-drop>${photoInner()}</div>
+      <div class="wzpbar"><label class="btn" for="wzfile"><span class="bt">${ic('image')}<span id="wzpl">${W.photo?t('wz_change'):t('wz_pick')}</span></span></label>
+        <input id="wzfile" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif,image/*" hidden>
+        <small>${t('wz_drop')}</small></div>
+      <p class="wzerr" id="wzperr" aria-live="polite"></p></div>
+    <div class="wzf"><div class="wzrow"><span><b>${t('wz_nophoto')}</b><small>${t('wz_nophoto_d')}</small></span>${ltog('data-wt="noPhoto"',W.noPhoto,t('wz_nophoto'))}</div></div>`;
+}
+function progHTML(){
+  return `<div class="wzprog" id="wzprog" style="--p:${W.step/(WZN-1)}"><div class="wzbar"><span class="wzfill"></span></div>
+    <ol>${[0,1,2,3].map(i=>`<li><button type="button" data-wzgo="${i}"><span class="wzdot"></span><span class="wzlbl">${t('wz_s'+i)}</span></button></li>`).join('')}</ol></div>`;
+}
+function updProg(){
+  const p=$('#wzprog');if(!p)return;
+  p.style.setProperty('--p',W.step/(WZN-1));
+  $$('li',p).forEach((li,i)=>{
+    const st=i<W.step?'done':i===W.step?'cur':'';
+    if(li.dataset.ps!==st){li.dataset.ps=st;const d=$('.wzdot',li);d.innerHTML=i<W.step?ic('check'):String(i+1)}
+    const b=$('button',li);i===W.step?b.setAttribute('aria-current','step'):b.removeAttribute('aria-current');
+  });
+}
+function footHTML(){
+  const last=W.step===WZN-1;
+  return `${btn(`${ic('arrowl')}${t('wz_back')}`,`data-wzgo="${W.step-1}" ${W.step===0?'disabled':''}`,'wzback')}
+    <span class="wzerr" id="wzerr" aria-live="polite"></span>
+    ${last?btn(`${ic('check')}<span>${t('wz_save')}</span>`,'data-wsave','primary'):btn(`${t('wz_next')}${ic('arrow')}`,`data-wzgo="${W.step+1}"`,'primary')}`;
+}
+function wizardHTML(){
+  return `<div class="sheet glass rf wzsheet">
+    <div class="sheet-actions"><div><button class="xbtn" type="button" id="xclose" aria-label="${esc(t('close'))}">${ic('close')}</button></div></div>
+    <div class="s-head"><h2>${wzEdit?t('wz_edit_h'):t('wz_h')}</h2><p>${t('wz_p')}</p></div>
+    ${progHTML()}
+    <div class="wzstage" id="wzstage"><div class="wzpanel">${panelHTML(W.step)}</div></div>
+    <div class="wzfoot" id="wzfoot">${footHTML()}</div>
+  </div>`;
+}
+function openWizard(id){
+  if(id){if(!W||wzEdit!==id){W=draftFrom(byId[id]);wzEdit=id}}
+  else if(!W||wzEdit){W=newDraft();wzEdit=null}
+  ov.dataset.id='';
+  openOverlay('wizard',wizardHTML(),wzEdit?t('wz_edit_h'):t('wz_h'));
+  updProg();
+  setTimeout(()=>{if(W.step===0){const n=$('#wzName');n&&!n.value&&n.focus({preventScroll:true})}},60);
+}
+
+/* ---------- проверка и смяна на стъпките ---------- */
+function wzErr(msg,target){
+  const e=$('#wzerr');if(e)e.textContent=msg||'';
+  if(msg&&!reduce){const f=$('#wzfoot');f&&e.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(-3px)'},{transform:'none'}],{duration:360})}
+  if(target){target.classList.add('bad');target.focus({preventScroll:false});if(!reduce)target.animate([{transform:'translateX(0)'},{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'translateX(-4px)'},{transform:'none'}],{duration:380})}
+}
+function valid(n){
+  if(n>=1&&!W.name.trim()){return [0,t('wz_err_name'),'#wzName']}
+  if(n>=2&&!W.steps.some(s=>s.t.trim())){return [1,t('wz_err_steps'),'[data-sf="0"]']}
+  return null;
+}
+function goStep(n){
+  if(wzBusy||n<0||n>=WZN||n===W.step)return;
+  if(n>W.step){
+    const bad=valid(n);
+    if(bad){
+      if(bad[0]!==W.step){goStep(bad[0]);setTimeout(()=>wzErr(bad[1],$(bad[2],ov)),420);return}
+      wzErr(bad[1],$(bad[2],ov));return;
+    }
+  }
+  const dir=n>W.step?1:-1,st=$('#wzstage'),old=st.firstElementChild;
+  W.step=n;
+  const nw=document.createElement('div');nw.className='wzpanel';nw.innerHTML=panelHTML(n);
+  const upd=()=>{updProg();$('#wzfoot').innerHTML=footHTML()};
+  const sh=$('.wzsheet');
+  const top=()=>{const b=sh.getBoundingClientRect();if(b.top<0)ov.scrollTo({top:ov.scrollTop+b.top-10,behavior:reduce?'auto':'smooth'})};
+  if(reduce){st.replaceChildren(nw);upd();top();return}
+  wzBusy=true;st.style.overflow='hidden';
+  const h0=st.offsetHeight;
+  old.animate([{opacity:1,transform:'none'},{opacity:0,transform:`translateX(${-40*dir}px) scale(.98)`}],{duration:170,easing:'ease-in',fill:'forwards'}).onfinish=()=>{
+    st.replaceChildren(nw);upd();
+    const h1=st.offsetHeight;
+    st.animate([{height:h0+'px'},{height:h1+'px'}],{duration:420,easing:'cubic-bezier(.3,1.2,.4,1)'});
+    nw.animate([{opacity:0,transform:`translateX(${50*dir}px) scale(.98)`},{opacity:1,transform:'none'}],{duration:440,easing:'cubic-bezier(.2,1.25,.35,1)'}).onfinish=()=>{wzBusy=false;st.style.overflow=''};
+    top();
+  };
+}
+
+/* ---------- списъци със стъпки и съставки (с анимации) ---------- */
+function rerenderSteps(){const ol=$('#wzsteps');if(ol)ol.innerHTML=W.steps.map((s,i)=>stepItem(s,i,W.steps.length)).join('')}
+function rerenderIngs(){const ul=$('#wzings');if(ul)ul.innerHTML=W.ing.map((g,i)=>ingItem(g,i,W.ing.length)).join('')}
+function growIn(el){
+  if(reduce||!el)return;
+  const h=el.offsetHeight;
+  el.animate([{height:'0px',opacity:0,transform:'scale(.92)',marginTop:'-10px'},{height:h+'px',opacity:1,transform:'none',marginTop:'0px'}],{duration:460,easing:'cubic-bezier(.3,1.3,.4,1)'});
+}
+function shrinkOut(el,done){
+  if(reduce||!el){done();return}
+  el.style.overflow='hidden';
+  el.animate([{height:el.offsetHeight+'px',opacity:1,transform:'none'},{height:'0px',opacity:0,transform:'scale(.9)',marginTop:'-10px',paddingTop:'0px',paddingBottom:'0px'}],{duration:300,easing:'cubic-bezier(.5,0,.75,0)',fill:'forwards'}).onfinish=done;
+}
+function bounce(el){if(!reduce&&el)el.animate([{transform:'scale(1)'},{transform:'scale(.9)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],{duration:420,easing:'ease-out'})}
+
+/* ---------- снимка: смаляване до 1000 px и JPEG ---------- */
+function loadPhoto(file){
+  const er=$('#wzperr');if(er)er.textContent='';
+  if(!file)return;
+  if(file.type&&!/^image\//.test(file.type)){if(er)er.textContent=t('wz_err_photo');return}
+  const url=URL.createObjectURL(file),img=new Image();
+  img.onload=()=>{
+    const m=1000,s=Math.min(1,m/Math.max(img.naturalWidth,img.naturalHeight));
+    const c=document.createElement('canvas');c.width=Math.max(1,Math.round(img.naturalWidth*s));c.height=Math.max(1,Math.round(img.naturalHeight*s));
+    const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(img,0,0,c.width,c.height);
+    URL.revokeObjectURL(url);
+    W.photo=c.toDataURL('image/jpeg',.8);W.noPhoto=false;
+    const b=$('[data-wt="noPhoto"]',ov);b&&setLt(b,false);
+    const l=$('#wzpl');if(l)l.textContent=t('wz_change');
+    showPhoto();
+  };
+  img.onerror=()=>{URL.revokeObjectURL(url);if(er)er.textContent=t('wz_err_photo')};
+  img.src=url;
+}
+function showPhoto(){
+  const p=$('#wzphoto');if(!p)return;
+  p.innerHTML=photoInner();
+  if(!reduce)p.firstElementChild&&p.firstElementChild.animate([{opacity:0,transform:'scale(1.06)'},{opacity:1,transform:'none'}],{duration:480,easing:'cubic-bezier(.2,.9,.3,1)'});
+}
+
+/* ---------- запис ---------- */
+function saveOwnList(list){try{localStorage.setItem('trapeza-own',JSON.stringify(list));return true}catch(e){return false}}
+function rebuildAll(){buildHome();MKEYS.forEach(buildMeal);buildSearch();buildFridge();if(fsel.size)renderFridge()}
+function saveW(btnEl){
+  const bad=valid(WZN);if(bad){goStep(bad[0]);setTimeout(()=>wzErr(bad[1],$(bad[2],ov)),420);return}
+  const id=wzEdit||('u'+Date.now().toString(36));
+  const prev=OWN.find(x=>x.id===id);
+  const o={id,meal:W.meal,name:W.name.trim(),lead:W.lead.trim(),time:W.time||0,serv:W.serv,lvl:W.lvl||0,veg:W.veg||W.vegan,vegan:W.vegan,
+    ing:W.ing.filter(g=>g.n.trim()).map(g=>{const a=parseFloat(String(g.a).replace(',','.'));return [g.n.trim(),isFinite(a)&&a>0?a:null,isFinite(a)&&a>0?g.u:'']}),
+    steps:W.steps.filter(s=>s.t.trim()).map(s=>[s.t.trim(),s.on?s.min:0]),
+    nut:W.nutOn?Object.assign({},W.nut):null,photo:W.noPhoto?null:(W.photo||null),created:prev?prev.created:Date.now()};
+  const list=prev?OWN.map(x=>x.id===id?o:x):OWN.concat(o);
+  if(!saveOwnList(list)){wzErr(t('wz_err_space'));return}
+  OWN=list;
+  const at=R.findIndex(r=>r.id===id);
+  addOwnToR(o,at>=0?at:null);
+  rebuildAll();
+  W=null;wzEdit=null;
+  const done=()=>{lastRect=null;location.hash='#r-'+id};
+  if(reduce||!btnEl){done();return}
+  btnEl.classList.add('ok');$('.bt',btnEl).innerHTML=`${ic('check')}<span>${t('wz_saved')}</span>`;
+  btnEl.animate([{transform:'scale(1)'},{transform:'scale(1.12)'},{transform:'scale(1)'}],{duration:420,easing:'cubic-bezier(.3,1.5,.5,1)'});
+  setTimeout(done,520);
+}
+function deleteOwn(id){
+  const list=OWN.filter(x=>x.id!==id);saveOwnList(list);OWN=list;
+  const i=R.findIndex(r=>r.id===id);if(i>=0)R.splice(i,1);
+  delete byId[id];delete PHOTOS[id];
+  if(favs.has(id)){favs.delete(id);store.set('trapeza-fav',[...favs])}
+  if(featId===id)featId=null;
+  rebuildAll();
+}
+
+/* ---------- събития ---------- */
+document.addEventListener('click',e=>{
+  const tg=e.target;let el;
+  if(!tg.closest)return;
+  if((el=tg.closest('#addBtn'))){lastRect=el.closest('.banner').getBoundingClientRect();return}
+  if((el=tg.closest('[data-ownsearch]'))){sst.own=true;return}
+  if((el=tg.closest('[data-wedit]'))){lastRect=null;location.hash='#redakt-'+el.dataset.wedit;return}
+  if((el=tg.closest('[data-wrm]'))){
+    if(!el.dataset.sure){el.dataset.sure='1';const s=$('.bt span',el);if(s)s.textContent=t('del_sure');bounce(el);setTimeout(()=>{if(el.isConnected){delete el.dataset.sure;if(s)s.textContent=t('del')}},3500);return}
+    deleteOwn(el.dataset.wrm);requestClose();return}
+  if(!sheetOpen||ovKind!=='wizard')return;
+  if((el=tg.closest('[data-wzgo]'))){if(!el.disabled)goStep(+el.dataset.wzgo);return}
+  if((el=tg.closest('[data-wsave]'))){saveW(el);return}
+  if((el=tg.closest('[data-wlvl]'))){const v=+el.dataset.wlvl;W.lvl=W.lvl===v?0:v;$$('[data-wlvl]',ov).forEach(b=>b.setAttribute('aria-pressed',+b.dataset.wlvl===W.lvl));bounce(el);return}
+  if((el=tg.closest('[data-wmeal]'))){W.meal=el.dataset.wmeal;$$('[data-wmeal]',ov).forEach(b=>b.setAttribute('aria-pressed',b.dataset.wmeal===W.meal));bounce(el);return}
+  if((el=tg.closest('[data-wt]'))){
+    const k=el.dataset.wt;W[k]=!W[k];setLt(el,W[k]);
+    if(k==='vegan'&&W.vegan&&!W.veg){W.veg=true;setLt($('[data-wt="veg"]',ov),true)}
+    if(k==='veg'&&!W.veg&&W.vegan){W.vegan=false;setLt($('[data-wt="vegan"]',ov),false)}
+    if(k==='nutOn')$('#wznut').dataset.open=W.nutOn;
+    if(k==='noPhoto'){showPhoto()}
+    return}
+  if((el=tg.closest('[data-wst]'))){
+    const i=+el.dataset.wst,s=W.steps[i];s.on=!s.on;setLt(el,s.on);
+    el.closest('.wzstep').querySelector('.wzcoll').dataset.open=s.on;return}
+  if((el=tg.closest('[data-wadd]'))){
+    W.steps.push({t:'',min:10,on:false});rerenderSteps();
+    const li=$('#wzsteps').lastElementChild;growIn(li);setTimeout(()=>{const a=$('textarea',li);a&&a.focus({preventScroll:false})},reduce?0:200);return}
+  if((el=tg.closest('[data-wdel]'))){
+    if(W.steps.length<2)return;const i=+el.dataset.wdel;
+    shrinkOut(el.closest('.wzstep'),()=>{W.steps.splice(i,1);rerenderSteps()});return}
+  if((el=tg.closest('[data-waddi]'))){
+    W.ing.push({n:'',a:'',u:'г'});rerenderIngs();
+    const li=$('#wzings').lastElementChild;growIn(li);setTimeout(()=>{const a=$('input',li);a&&a.focus({preventScroll:false})},reduce?0:200);return}
+  if((el=tg.closest('[data-widel]'))){
+    if(W.ing.length<2)return;const i=+el.dataset.widel;
+    shrinkOut(el.closest('.wzing'),()=>{W.ing.splice(i,1);rerenderIngs()});return}
+});
+document.addEventListener('input',e=>{
+  if(!W||ovKind!=='wizard')return;
+  const x=e.target;
+  if(x.dataset.wf){W[x.dataset.wf]=x.value;x.classList.remove('bad');const er=$('#wzerr');if(er)er.textContent='';return}
+  if(x.dataset.sf!=null){W.steps[+x.dataset.sf].t=x.value;x.classList.remove('bad');const er=$('#wzerr');if(er)er.textContent='';return}
+  if(x.dataset.if){W.ing[+x.dataset.ii][x.dataset.if]=x.value;return}
+});
+document.addEventListener('change',e=>{
+  if(!W||ovKind!=='wizard')return;
+  const x=e.target;
+  if(x.id==='wzfile'){loadPhoto(x.files&&x.files[0]);x.value='';return}
+  if(x.dataset&&x.dataset.if){W.ing[+x.dataset.ii][x.dataset.if]=x.value}
+});
+/* пускане на снимка върху полето */
+document.addEventListener('dragover',e=>{const d=e.target.closest&&e.target.closest('[data-drop]');if(d){e.preventDefault();d.classList.add('over')}});
+document.addEventListener('dragleave',e=>{const d=e.target.closest&&e.target.closest('[data-drop]');if(d)d.classList.remove('over')});
+document.addEventListener('drop',e=>{const d=e.target.closest&&e.target.closest('[data-drop]');if(!d)return;e.preventDefault();d.classList.remove('over');loadPhoto(e.dataTransfer.files&&e.dataTransfer.files[0])});
+
+/* плъзгачи с един палец (време, порции, таймери, хранителни стойности) */
+let sdrag=null;
+const sval=(el,x)=>{const b=el.getBoundingClientRect(),[mn,mx]=cfgOf(el.dataset.sk);return mn+Math.max(0,Math.min(1,(x-b.left)/b.width))*(mx-mn)};
+document.addEventListener('pointerdown',e=>{
+  const el=e.target.closest&&e.target.closest('.srng');if(!el||!W)return;
+  e.preventDefault();
+  const th=$('.rthumb',el);
+  paintS(el,sval(el,e.clientX));
+  sdrag={el,th,id:e.pointerId};th.classList.add('active');
+  try{th.setPointerCapture(e.pointerId)}catch(_){}
+});
+document.addEventListener('pointermove',e=>{if(sdrag&&e.pointerId===sdrag.id)paintS(sdrag.el,sval(sdrag.el,e.clientX))});
+const sEnd=e=>{if(sdrag&&e.pointerId===sdrag.id){sdrag.th.classList.remove('active');sdrag=null}};
+document.addEventListener('pointerup',sEnd);document.addEventListener('pointercancel',sEnd);
+document.addEventListener('keydown',e=>{
+  const th=e.target.closest&&e.target.closest('.srng .rthumb');if(!th||!W)return;
+  const el=th.closest('.srng'),k=el.dataset.sk,[mn,mx,st]=cfgOf(k),cur=getV(k);let v=null;
+  if(e.key==='ArrowLeft'||e.key==='ArrowDown')v=cur-st*(e.shiftKey?10:1);
+  else if(e.key==='ArrowRight'||e.key==='ArrowUp')v=cur+st*(e.shiftKey?10:1);
+  else if(e.key==='Home')v=mn;else if(e.key==='End')v=mx;
+  if(v==null)return;e.preventDefault();paintS(el,v);
+},true);
 
 /* Старт */
 applyStatic();
